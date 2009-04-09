@@ -1,0 +1,13 @@
+29.1.2009 Arthur Allignol <arthur.allignol@fdm.uni-freiburg.de>
+	
+* modification of the documentation 
+w.r.t new parser
+	
+* changes in the plot (new arguments) and xyplot (internal) method
+
+* in mvna(): argument state.numbers changed for state.names
+
+15.9.2008 Arthur Allignol <arthur.allignol@fdm.uni-freiburg.de>
+
+* change in mvna to improve computation time
+
