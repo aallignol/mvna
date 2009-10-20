@@ -1,4 +1,5 @@
 mvna <- function(data, state.names, tra, cens.name) {
+
     if (missing(data))
         stop("Argument 'data' is missing with no default")
     if (missing(tra))
@@ -30,6 +31,7 @@ mvna <- function(data, state.names, tra, cens.name) {
             stop("The name of the censoring variable just is a name of the model states.")
         }
     }
+    
 ### transitions
     colnames(tra) <- rownames(tra) <- state.names
     t.from <- lapply(1:dim(tra)[2], function(i) {
@@ -54,6 +56,7 @@ mvna <- function(data, state.names, tra, cens.name) {
         stop("Transitions into the same state are not allowed")
     if (!(all(ref %in% test) == TRUE))
         warning("You may have specified more possible transitions than actually present in the data")
+    
 ### data.frame transformation
     data$from <- as.factor(data$from)
     data$to <- as.factor(data$to)
@@ -69,6 +72,7 @@ mvna <- function(data, state.names, tra, cens.name) {
         data$to <- factor(data$to, levels = state.names, ordered = TRUE)
         levels(data$to) <- 1:length(state.names)
     }
+    
 ### if not, put like counting process data
     if ("time" %in% names(data)) {
         data <- data[order(data$id, data$time), ]
@@ -83,12 +87,14 @@ mvna <- function(data, state.names, tra, cens.name) {
     else {
         if (sum(data$entry < data$exit) != nrow(data))
             stop("Exit time from a state must be > entry time")
-    } 
+    }
+    
 ### Computation of the risk set and dN
     ttime <- c(data$entry, data$exit)
     times <- sort(unique(ttime))
     data$from <- as.integer(as.character(data$from))
     data$to <- as.integer(as.character(data$to))
+    
     temp <- .C("risk_set_mvna",
                as.integer(nrow(data)),
                as.integer(length(times)),
@@ -102,9 +108,11 @@ mvna <- function(data, state.names, tra, cens.name) {
                ncens=integer(dim(tra)[1] * length(times)),
                nev=integer(dim(tra)[1] * dim(tra)[2] * length(times)),
                PACKAGE = "mvna")
+    
     nrisk <- matrix(temp$nrisk, ncol=dim(tra)[1], nrow=length(times))
     ncens <- matrix(temp$ncens, ncol=dim(tra)[1], nrow=length(times))
     nev <- array(temp$nev, dim=c(dim(tra), length(times)))
+    
 ### computation of the NA estimates
     colnames(nrisk) <- state.names
     dimnames(nev) <- list(state.names, state.names, times)
@@ -116,12 +124,14 @@ mvna <- function(data, state.names, tra, cens.name) {
         var2 <- cumsum(((t.nrisk - t.nev)/t.nrisk^3) * t.nev)
         data.frame(na=na, var1=var1, var2=var2, time=times[nrisk[, as.character(trans[i, 1])] != 0])
         })
+    
     nrisk <- nrisk[, !(colnames(nrisk) %in% setdiff(unique(trans$to), unique(trans$from))), drop = FALSE]
     names(est) <- namen
     eest <- list(time=times, nrisk=nrisk, nev=nev, ncens=ncens,
                  state.names=state.names, cens.name=cens.name,
                  trans=trans)
     res <- c(est, eest)
+    
     class(res) <- "mvna"
     res
 }    
