@@ -76,15 +76,15 @@ mvna <- function(data, state.names, tra, cens.name) {
 ### if not, put like counting process data
     if ("time" %in% names(data)) {
         data <- data[order(data$id, data$time), ]
+        idd <- as.integer(data$id)
         entree <- double(length(data$time))
-        masque <- rbind(1, apply(as.matrix(data$id), 2, diff))
+        masque <- rbind(1, apply(as.matrix(idd), 2, diff))
         entree <- c(0, data$time[1:(length(data$time) - 1)]) * (masque == 0)
         data <- data.frame(id = data$id, from = data$from,
                            to = data$to, entry = entree, exit = data$time)
         if (sum(data$entry < data$exit) != nrow(data))
             stop("Exit time from a state must be > entry time")
-    }
-    else {
+    } else {
         if (sum(data$entry < data$exit) != nrow(data))
             stop("Exit time from a state must be > entry time")
     }
