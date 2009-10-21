@@ -1,3 +1,5 @@
+require(mvna)
+
 ### First test with fake data
 
 time <- 1:10
