@@ -58,4 +58,72 @@ all.equal(tna12, test3$"1 2"$na)
 
 ### tests with the included data sets
 
+## sir.adm
+data(sir.adm)
 
+## data set transformation
+data(sir.adm) 
+id <- sir.adm$id
+from <- sir.adm$pneu
+to <- ifelse(sir.adm$status==0,"cens",sir.adm$status+1)
+times <- sir.adm$time
+dat.sir <- data.frame(id,from,to,time=times)
+
+## Possible transitions
+tra <- matrix(ncol=4,nrow=4,FALSE)
+tra[1:2,3:4] <- TRUE
+
+na.pneu <- mvna(dat.sir,c("0","1","2","3"),
+                tra,"cens")
+
+na.pneu
+
+na.pneu$"0 2"$na
+na.pneu$"0 2"$var1
+na.pneu$"0 2"$var2
+
+na.pneu$"1 2"$na
+na.pneu$"1 2"$var1
+na.pneu$"1 2"$var2
+
+na.pneu$nrisk
+
+
+## sir.cont
+data(sir.cont)
+
+## Matrix of possible transitions
+tra <- matrix(ncol=3,nrow=3,FALSE)
+tra[1, 2:3] <- TRUE
+tra[2, c(1, 3)] <- TRUE
+
+## Modification for patients entering and leaving a state
+## at the same date
+sir.cont <- sir.cont[order(sir.cont$id, sir.cont$time), ]
+for (i in 2:nrow(sir.cont)) {
+    if (sir.cont$id[i]==sir.cont$id[i-1]) {
+        if (sir.cont$time[i]==sir.cont$time[i-1]) {
+            sir.cont$time[i-1] <- sir.cont$time[i-1] - 0.5
+        }
+    }
+}
+
+## Computation of the Nelson-Aalen estimates
+na.cont <- mvna(sir.cont,c("0","1","2"),tra,"cens")
+
+na.cont
+
+na.cont$"0 1"$na
+na.cont$"0 1"$var1
+na.cont$"0 1"$var2
+
+na.cont$"0 2"$na
+na.cont$"0 2"$var1
+na.cont$"0 2"$var2
+
+na.cont$"1 2"$na
+na.cont$"1 2"$var1
+na.cont$"1 2"$var2
+
+na.cont$nrisk
+na.cont$nev
