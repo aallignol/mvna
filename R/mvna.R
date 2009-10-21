@@ -95,7 +95,7 @@ mvna <- function(data, state.names, tra, cens.name) {
     data$from <- as.integer(as.character(data$from))
     data$to <- as.integer(as.character(data$to))
     
-    temp <- .C("risk_set_mvna",
+    temp <- .C(risk_set_mvna,
                as.integer(nrow(data)),
                as.integer(length(times)),
                as.integer(c(dim(tra), length(times))),
@@ -106,8 +106,7 @@ mvna <- function(data, state.names, tra, cens.name) {
                as.double(data$exit),
                nrisk=integer(dim(tra)[1] * length(times)),
                ncens=integer(dim(tra)[1] * length(times)),
-               nev=integer(dim(tra)[1] * dim(tra)[2] * length(times)),
-               PACKAGE = "mvna")
+               nev=integer(dim(tra)[1] * dim(tra)[2] * length(times)))
     
     nrisk <- matrix(temp$nrisk, ncol=dim(tra)[1], nrow=length(times))
     ncens <- matrix(temp$ncens, ncol=dim(tra)[1], nrow=length(times))
