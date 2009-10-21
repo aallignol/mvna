@@ -127,3 +127,39 @@ na.cont$"1 2"$var2
 
 na.cont$nrisk
 na.cont$nev
+
+## abortion data
+data(abortion)
+
+## Data set modification in order to be used by mvna
+names(abortion) <- c("id", "entry", "exit", "from", "to")
+abortion$to <- abortion$to + 1
+
+## computation of the matrix giving the possible transitions
+tra <- matrix(FALSE, nrow = 5, ncol = 5)
+tra[1:2, 3:5] <- TRUE
+
+na.abortion <- mvna(abortion, as.character(0:4), tra, NULL)
+
+na.abortion$"0 2"$na
+na.abortion$"0 2"$var1
+na.abortion$"0 2"$var2
+
+na.abortion$"1 2"$na
+na.abortion$"1 2"$var1
+na.abortion$"1 2"$var2
+
+na.abortion$"1 3"$na
+na.abortion$"1 3"$var1
+na.abortion$"1 3"$var2
+
+na.abortion$"0 3"$na
+na.abortion$"0 3"$var1
+na.abortion$"0 3"$var2
+
+na.abortion$nrisk
+
+na.abortion$nev
+
+na.abortion
+
