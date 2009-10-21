@@ -44,7 +44,7 @@ mvna <- function(data, state.names, tra, cens.name) {
     t.to <- unlist(t.to)
     trans <- data.frame(from=t.from, to=t.to)
     namen <- paste(trans[, 1], trans[, 2])
-                                        # test on transitions
+    ## test on transitions
     test <- unique(paste(data$from, data$to))
     if (!(is.null(cens.name))) {
         ref <- c(paste(trans$from, trans$to), paste(unique(trans$from), cens.name))
@@ -95,7 +95,7 @@ mvna <- function(data, state.names, tra, cens.name) {
     data$from <- as.integer(as.character(data$from))
     data$to <- as.integer(as.character(data$to))
     
-    temp <- .C(risk_set_mvna,
+    temp <- .C("risk_set_mvna",
                as.integer(nrow(data)),
                as.integer(length(times)),
                as.integer(c(dim(tra), length(times))),
@@ -107,28 +107,32 @@ mvna <- function(data, state.names, tra, cens.name) {
                nrisk=integer(dim(tra)[1] * length(times)),
                ncens=integer(dim(tra)[1] * length(times)),
                nev=integer(dim(tra)[1] * dim(tra)[2] * length(times)))
-    
+
     nrisk <- matrix(temp$nrisk, ncol=dim(tra)[1], nrow=length(times))
     ncens <- matrix(temp$ncens, ncol=dim(tra)[1], nrow=length(times))
     nev <- array(temp$nev, dim=c(dim(tra), length(times)))
-    
+
 ### computation of the NA estimates
     colnames(nrisk) <- state.names
     dimnames(nev) <- list(state.names, state.names, times)
-    est <- lapply(1:nrow(trans), function(i) { # on enlève les temps ou nrisk == 0
-        t.nrisk <- nrisk[, as.character(trans[i, 1])][nrisk[, as.character(trans[i, 1])] != 0]
-        t.nev <- nev[as.character(trans[i, 1]), as.character(trans[i, 2]), ][nrisk[, as.character(trans[i, 1])] != 0]
+    
+    est <- lapply(1:nrow(trans), function(i) {
+        ## on enlève les temps ou nrisk == 0
+        ind <- nrisk[, as.character(trans[i, 1])] != 0
+        t.nrisk <- nrisk[, as.character(trans[i, 1])][ind]
+        t.nev <- nev[as.character(trans[i, 1]), as.character(trans[i, 2]), ][ind]
         na <- cumsum(t.nev/t.nrisk)
         var1 <- cumsum(t.nev/t.nrisk^2)
         var2 <- cumsum(((t.nrisk - t.nev)/t.nrisk^3) * t.nev)
-        data.frame(na=na, var1=var1, var2=var2, time=times[nrisk[, as.character(trans[i, 1])] != 0])
+        data.frame(na = na, var.aalen = var1, var.greenwood = var2,
+                   time = times[ind])
         })
     
     nrisk <- nrisk[, !(colnames(nrisk) %in% setdiff(unique(trans$to), unique(trans$from))), drop = FALSE]
     names(est) <- namen
-    eest <- list(time=times, nrisk=nrisk, nev=nev, ncens=ncens,
-                 state.names=state.names, cens.name=cens.name,
-                 trans=trans)
+    eest <- list(time = times, n.risk = nrisk, n.event = nev, n.cens = ncens,
+                 state.names = state.names, cens.name = cens.name,
+                 trans = trans)
     res <- c(est, eest)
     
     class(res) <- "mvna"
