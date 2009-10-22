@@ -35,7 +35,7 @@ summary.mvna <- function(object, level = 0.95,
                    upper <- -2 * log(sin(pmax(0, asin(exp(-na / 2)) -
                                              (1 / 2) * z * sqrt(var) *
                                              (exp(na) - 1)^(-1 / 2))))
-                   lower <- 2 * log(sin(pmin(pi / 2, asin(exp(-na / 2)) +
+                   lower <- -2 * log(sin(pmin(pi / 2, asin(exp(-na / 2)) +
                                              (1 / 2) * z * sqrt(var) *
                                              (exp(na) - 1)^(- 1 / 2))))
                })
