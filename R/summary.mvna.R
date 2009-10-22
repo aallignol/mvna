@@ -12,10 +12,11 @@ summary.mvna <- function(object, level = 0.95,
     ci.fun <- match.arg(ci.fun)
 
     ## we just need the information relative to the transitions
-    temp <- object[match(paste(object$trans[, 1], object$trans[, 2]),
-                         names(object))]
+    count <- match(paste(object$trans[, 1], object$trans[, 2]),
+                         names(object))
 
-    zzz <- lapply(temp, function(x) {
+    zzz <- lapply(count, function(i) {
+        x <- object[[i]]
         na <- x$na
         var <- x[, grep(var.type, names(x))]
         time <- x$time
@@ -41,13 +42,17 @@ summary.mvna <- function(object, level = 0.95,
         upper[is.nan(upper)] <- 0
         lower[is.nan(lower)] <- 0
 
-        ## ind <- object$n.risk[, as.character(object$trans[count, 1])] != 0
-##         n.risk <- object$n.risk[ind, as.character(object$trans[count, 1])]
-##         n.event <- object$n.event[as.character(object$trans[count, 1]),
-##                                   as.character(object$trans[count, 2]),
-##                                   ind]
+        ind <- object$n.risk[, as.character(object$trans[i, 1])] != 0
+        n.risk <- object$n.risk[ind, as.character(object$trans[i, 1])]
+        n.event <- object$n.event[as.character(object$trans[i, 1]),
+                                  as.character(object$trans[i, 2]), ind]
 
-        data.frame(time, na, var, lower, upper)
+        temp <- data.frame(time, na, var, lower, upper, n.risk, n.event)
+        names(temp) <- c("time", "na", paste("var", var.type, sep = "."),
+                         "lower", "upper", "n.risk", "n.event")
+        temp
     })
+    
+    names(zzz) <- names(object)[count]
     zzz
 }
