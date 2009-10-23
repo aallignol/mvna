@@ -54,5 +54,6 @@ summary.mvna <- function(object, level = 0.95,
     })
     
     names(zzz) <- names(object)[count]
+    class(zzz) <- "summary.mvna"
     zzz
 }
