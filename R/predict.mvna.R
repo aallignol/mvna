@@ -13,7 +13,7 @@ predict.mvna <- function(object, times, tr.choice, level = 0.95,
         tr.choice <- ref
     }
     if (sum(tr.choice %in% ref) != length(tr.choice))
-        stop("Names of possible transitions and 'tr.choice' msut match")
+        stop("Names of the possible transitions and 'tr.choice' must match")
 
     temp <- summary(object, level = level, var.type = var.type,
                     ci.fun = ci.fun)[tr.choice]
