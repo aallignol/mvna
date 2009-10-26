@@ -3,7 +3,7 @@ plot.mvna <- function(x, tr.choice, xlab = "Time",
                       conf.int = FALSE, level = 0.95,
                       var.type = c("aalen", "greenwood"),
                       ci.fun = c("log", "linear", "arcsin"),
-                      ci.col = 1, ci.lty = 3,
+                      ci.col = col, ci.lty = 3,
                       legend = TRUE, legend.pos, curvlab, legend.bty = "n",
                       ...) {
 
