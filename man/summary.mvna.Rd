@@ -73,5 +73,4 @@ summ.na.pneu <- summary(na.pneu)
 ## cumulative hazard for 0 -> 2 transition:
 summ.na.pneu$"0 2"$na
 }
-\keyword{methods}
 \keyword{survival}

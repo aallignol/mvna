@@ -79,3 +79,4 @@ na.cont <- mvna(sir.cont,c("0","1","2"),tra,"cens")
 plot(na.cont, tr.choice=c("0 2", "1 2"))
 }
 \keyword{hplot}
+\keyword{survival}
