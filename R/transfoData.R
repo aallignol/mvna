@@ -1,3 +1,3 @@
-mvna2tdp <- function(data, ...) {
+mvna2tdc <- function(data, ...) {
 
     
