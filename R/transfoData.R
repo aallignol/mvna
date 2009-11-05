@@ -44,7 +44,9 @@ mvna2tdc <- function(data, state.names, tra, cens.name, cov.states, ...) {
 
 ### Let's create the data set now
     id <- data$id
-    status <- as.numeric(as.character(data$to)) * ind.absorb
+    ## status <- as.integer(levels(data$to))[data$to] * ind.absorb
+    status <- integer(nrow(data))
+    status[ind.absorb] <- absorb[match(data$to, absorb, nomatch = 0)]
     colnames(ind.cov) <- paste("cov", cov.states, sep = ".")
     ind.cov <- as.numeric(ind.cov)
     new.data <- data.frame(id = id,
