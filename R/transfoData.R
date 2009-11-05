@@ -41,10 +41,12 @@ mvna2tdc <- function(data, state.names, tra, cens.name,
 ###              has to keep its level even when we observe a transition
     ind.cens <- data$to == cens.name
     ind.absorb <- data$to %in% absorb
-    ind.c <- data$from %in% cov.states
-    ind.cov <- matrix(FALSE, nrow = nrow(data), ncol = length(cov.states))
-    ind.cov[ind.c, match(data$from[ind.c], cov.states)] <- TRUE
-
+    ## ind.c <- data$from %in% cov.states
+    ## ind.cov <- matrix(FALSE, nrow = nrow(data), ncol = length(cov.states))
+    ## ind.cov[ind.c, match(data$from[ind.c], cov.states)] <- TRUE
+### A bit more tricky. Deal with the covariates
+        
+    
 ### Let's create the data set now
     id <- data$id
     ## status <- as.integer(levels(data$to))[data$to] * ind.absorb
