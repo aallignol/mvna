@@ -76,7 +76,7 @@ mvna <- function(data, state.names, tra, cens.name) {
 ### if not, put like counting process data
     if ("time" %in% names(data)) {
         data <- data[order(data$id, data$time), ]
-        idd <- as.integer(data$id)
+        idd <- as.integer(factor(data$id))
         entree <- double(length(data$time))
         masque <- rbind(1, apply(as.matrix(idd), 2, diff))
         entree <- c(0, data$time[1:(length(data$time) - 1)]) * (masque == 0)
