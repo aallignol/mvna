@@ -1,4 +1,5 @@
-mvna2tdc <- function(data, state.names, tra, cens.name, cov.states, ...) {
+mvna2tdc <- function(data, state.names, tra, cens.name,
+                     cov.states, reversible = TRUE) {
     
     colnames(tra) <- rownames(tra) <- state.names
     t.from <- lapply(1:dim(tra)[2], function(i) {
@@ -35,6 +36,9 @@ mvna2tdc <- function(data, state.names, tra, cens.name, cov.states, ...) {
 ### state.numbers (won't be really possible, especially if
 ### the state.names are words)
 ### Found another way: create indices with what's interesting, and then get rid of the factors
+###
+### New problem: What's going on if we decide that actually the covariate
+###              has to keep its level even when we observe a transition
     ind.cens <- data$to == cens.name
     ind.absorb <- data$to %in% absorb
     ind.c <- data$from %in% cov.states
@@ -47,7 +51,7 @@ mvna2tdc <- function(data, state.names, tra, cens.name, cov.states, ...) {
     status <- integer(nrow(data))
     status[ind.absorb] <- absorb[match(data$to, absorb, nomatch = 0)]
     colnames(ind.cov) <- paste("cov", cov.states, sep = ".")
-    ind.cov <- as.numeric(ind.cov)
+    ind.cov <- ind.cov * 1
     new.data <- data.frame(id, data$entry, data$exit, ind.cov, status)
     colnames(new.data) <- c("id", "entry", "exit",
                             paste("cov", cov.states, sep = "."),
