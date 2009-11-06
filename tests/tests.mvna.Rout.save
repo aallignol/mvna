@@ -1,3 +1,5 @@
+WARNING: unknown option '--no-save--no-timing'
+
 
 R version 2.10.0 (2009-10-26)
 Copyright (C) 2009 The R Foundation for Statistical Computing
@@ -16,8 +18,6 @@ Type 'contributors()' for more information and
 Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
-
-[Previously saved workspace restored]
 
 > require(mvna)
 Loading required package: mvna
@@ -1304,6 +1304,21 @@ Transition 1 -> 2
 2 0 0 0
 
 > 
+> summ.na.cont <- summary(na.cont)
+> 
+> all.equal(summ.na.cont$"0 1"$na, na.cont$"0 1"$na)
+[1] TRUE
+> all.equal(summ.na.cont$"0 1"$var.aalen, na.cont$"0 1"$var.aalen)
+[1] TRUE
+> 
+> aa <- predict(na.cont, tr.choice = "0 1", times = 9.5)
+> 
+> aa
+$`0 1`
+  time        na    var.aalen     lower     upper n.risk n.event
+9  9.5 0.1801367 0.0006857176 0.1354766 0.2395191    173       4
+
+> 
 > ## abortion data
 > data(abortion)
 > 
@@ -1886,3 +1901,6 @@ Transition 1 -> 4
 
 > 
 > 
+> proc.time()
+   user  system elapsed 
+  1.032   0.064   1.075 
