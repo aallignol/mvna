@@ -9,8 +9,9 @@
 }
 \usage{
 \S3method{lines}{mvna}(x, tr.choice, col = 1, lty, conf.int = FALSE,
-level = 0.95, var.type = c("aalen", "greenwood"),
-ci.fun = c("log", "linear", "arcsin"), ci.col = col, ci.lty = 3, ...)
+      level = 0.95, var.type = c("aalen", "greenwood"),
+      ci.fun = c("log", "linear", "arcsin"), ci.col = col,
+      ci.lty = 3, ...)
 }
 \arguments{
   \item{x}{An object of class \code{mvna}.}
@@ -21,7 +22,7 @@ ci.fun = c("log", "linear", "arcsin"), ci.col = col, ci.lty = 3, ...)
   \item{lty}{A vector of line types. Default is 1:number of
     transitions.}
   \item{conf.int}{Logical. Indicates whether to display pointwise
-    confidence interval. Dzfault is \code{FALSE}.}
+    confidence interval. Default is \code{FALSE}.}
   \item{level}{Level of the confidence interval. Default is 0.95.}
   \item{var.type}{Specifies the variance estimator that should be used
     to compute the confidence interval. One of "aalen" or
