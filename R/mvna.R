@@ -130,7 +130,7 @@ mvna <- function(data, state.names, tra, cens.name) {
     
     nrisk <- nrisk[, !(colnames(nrisk) %in% setdiff(unique(trans$to), unique(trans$from))), drop = FALSE]
     names(est) <- namen
-    eest <- list(time = times, n.risk = nrisk, n.event = nev, n.cens = ncens,
+    eest <- list(time = times, nrisk = nrisk, nev = nev, ncens = ncens,
                  state.names = state.names, cens.name = cens.name,
                  trans = trans)
     res <- c(est, eest)
