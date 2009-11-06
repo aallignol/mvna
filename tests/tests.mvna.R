@@ -130,6 +130,15 @@ na.cont$"1 2"$var.greenwood
 na.cont$n.risk
 na.cont$n.event
 
+summ.na.cont <- summary(na.cont)
+
+all.equal(summ.na.cont$"0 1"$na, na.cont$"0 1"$na)
+all.equal(summ.na.cont$"0 1"$var.aalen, na.cont$"0 1"$var.aalen)
+
+aa <- predict(na.cont, tr.choice = "0 1", times = 9.5)
+
+aa
+
 ## abortion data
 data(abortion)
 
