@@ -33,7 +33,7 @@ legend = TRUE, legend.pos, curvlab, legend.bty = "n", ...)
   \item{var.type}{A character vector specifying the variance that
     should be used to compute the pointwise confidence
     intervals. Choices are "aalen" or "greenwood". Default is "aalen".}
-  \item{ci.type}{One of "log", "linear" or "arcsin". Indicates which
+  \item{ci.fun}{One of "log", "linear" or "arcsin". Indicates which
     transformation to apply to the confidence intervals.}
   \item{ci.col}{Colour for the confidence intervals. By default, the
     colour specified by \code{col} is used.}

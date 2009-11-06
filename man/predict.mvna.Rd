@@ -8,7 +8,7 @@
 \usage{
 \S3method{predict}{mvna}(object, times, tr.choice, level = 0.95,
 var.type = c("aalen", "greenwood"),
-ci.fun = c("log", "linear", "arcsin"))
+ci.fun = c("log", "linear", "arcsin"), ...)
 }
 
 \arguments{
@@ -32,7 +32,7 @@ ci.fun = c("log", "linear", "arcsin"))
   state 1, and from state 0 to state 2, the returned list will have two
   parts named "0 1" and "0 2". Each part contains a data.frame with
   columns:
-  \item{Time points specified by the user.}
+  \item{times}{Time points specified by the user.}
   \item{na}{Nelson-Aalen estimates at the specified times.}
   \item{var.aalen or var.greenwood}{Depending on what was specified in
     \code{var.type}.}

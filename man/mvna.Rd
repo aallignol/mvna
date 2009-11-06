@@ -63,7 +63,7 @@ mvna(data, state.names, tra, cens.name)
   event times.}
   \item{state.names}{ The same as in the function call.}
   \item{cens.name}{The same as in the function call.}
-  \item{A data frame, with columns \code{from} and \code{to}, that gives
+  \item{trans}{A data frame, with columns \code{from} and \code{to}, that gives
   the possible transitions.}
 }
 \note{
