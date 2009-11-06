@@ -7,4 +7,4 @@ Maintainer: Arthur Allignol <arthur.allignol@fdm.uni-freiburg.de>
 License: GPL (>=2)
 Depends: lattice
 Suggests: Rgraphviz, gridBase
-date: 2009/10/21
+date: 2009/11/6
