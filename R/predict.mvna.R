@@ -1,6 +1,6 @@
 predict.mvna <- function(object, times, tr.choice, level = 0.95,
                          var.type = c("aalen", "greenwood"),
-                         ci.fun = c("log", "linear", "arcsin")) {
+                         ci.fun = c("log", "linear", "arcsin"), ...) {
 
     if (!inherits(object, "mvna")) {
         stop("'object' must be of class 'mvna'")

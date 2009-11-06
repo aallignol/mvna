@@ -1,4 +1,4 @@
-print.mvna <- function(x) {
+print.mvna <- function(x, ...) {
 
     if (!inherits(x, "mvna")) {
         stop("'x' must be of class 'mvna'")

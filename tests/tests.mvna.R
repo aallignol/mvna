@@ -81,14 +81,14 @@ na.pneu <- mvna(dat.sir,c("0","1","2","3"),
 na.pneu
 
 na.pneu$"0 2"$na
-na.pneu$"0 2"$var1
-na.pneu$"0 2"$var2
+na.pneu$"0 2"$var.aalen
+na.pneu$"0 2"$var.greenwood
 
 na.pneu$"1 2"$na
-na.pneu$"1 2"$var1
-na.pneu$"1 2"$var2
+na.pneu$"1 2"$var.aalen
+na.pneu$"1 2"$var.greenwood
 
-na.pneu$nrisk
+na.pneu$n.risk
 
 
 ## sir.cont
@@ -116,19 +116,19 @@ na.cont <- mvna(sir.cont,c("0","1","2"),tra,"cens")
 na.cont
 
 na.cont$"0 1"$na
-na.cont$"0 1"$var1
-na.cont$"0 1"$var2
+na.cont$"0 1"$var.aalen
+na.cont$"0 1"$var.greenwood
 
 na.cont$"0 2"$na
-na.cont$"0 2"$var1
-na.cont$"0 2"$var2
+na.cont$"0 2"$var.aalen
+na.cont$"0 2"$var.greenwood
 
 na.cont$"1 2"$na
-na.cont$"1 2"$var1
-na.cont$"1 2"$var2
+na.cont$"1 2"$var.aalen
+na.cont$"1 2"$var.greenwood
 
-na.cont$nrisk
-na.cont$nev
+na.cont$n.risk
+na.cont$n.event
 
 ## abortion data
 data(abortion)
@@ -144,24 +144,24 @@ tra[1:2, 3:5] <- TRUE
 na.abortion <- mvna(abortion, as.character(0:4), tra, NULL)
 
 na.abortion$"0 2"$na
-na.abortion$"0 2"$var1
-na.abortion$"0 2"$var2
+na.abortion$"0 2"$var.aalen
+na.abortion$"0 2"$var.greenwood
 
 na.abortion$"1 2"$na
-na.abortion$"1 2"$var1
-na.abortion$"1 2"$var2
+na.abortion$"1 2"$var.aalen
+na.abortion$"1 2"$var.greenwood
 
 na.abortion$"1 3"$na
-na.abortion$"1 3"$var1
-na.abortion$"1 3"$var2
+na.abortion$"1 3"$var.aalen
+na.abortion$"1 3"$var.greenwood
 
 na.abortion$"0 3"$na
-na.abortion$"0 3"$var1
-na.abortion$"0 3"$var2
+na.abortion$"0 3"$var.aalen
+na.abortion$"0 3"$var.greenwood
 
-na.abortion$nrisk
+na.abortion$n.risk
 
-na.abortion$nev
+na.abortion$n.event
 
 na.abortion
 
