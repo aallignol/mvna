@@ -15,8 +15,8 @@
   \item{object}{An object of class \code{mvna}}
   \item{times}{Time-points at which one wants the estimates}
   \item{tr.choice}{A vector of character giving for which transitions
-    you want estimates. By default, the function will give the
-    Nelson-Aalen estimates for all the transitions.}
+    one wants estimates. By default, the function will give the
+    Nelson-Aalen estimates for all transitions.}
   \item{level}{Level of the pointwise confidence intervals. Default is
     0.95.}
   \item{var.type}{Variance estimator displayed and used to compute the

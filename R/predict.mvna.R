@@ -15,8 +15,8 @@ predict.mvna <- function(object, times, tr.choice, level = 0.95,
     if (sum(tr.choice %in% ref) != length(tr.choice))
         stop("Names of the possible transitions and 'tr.choice' must match")
 
-    temp <- summary(object, level = level, var.type = var.type,
-                    ci.fun = ci.fun)[tr.choice]
+    temp <- mvna::summary.mvna(object, level = level, var.type = var.type,
+                               ci.fun = ci.fun)[tr.choice]
     
     res <- lapply(temp, function(x) {
         ind <- findInterval(times, x$time)

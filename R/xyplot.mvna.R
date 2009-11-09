@@ -18,7 +18,7 @@ xyplot.mvna <- function(x, data = NULL, xlab = "Time", ylab = "Cumulative Hazard
     if (sum(tr.choice %in% names.trans) != length(tr.choice)) 
         stop("'tr.choice' and the name of the possible transitions must match")
 
-    z <- summary.mvna(x, level = level, var.type = var.type,
+    z <- mvna::summary.mvna(x, level = level, var.type = var.type,
                             ci.type = ci.type)
     ##     z <- mvna::summary.mvna(x, level = level, var.type = var.type,
     ##                       ci.type = ci.type)

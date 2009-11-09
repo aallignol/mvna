@@ -30,8 +30,8 @@ mvna(data, state.names, tra, cens.name)
   \item{tra}{A quadratic matrix of logical values describing the possible
     transitions within the multistate model. }
   \item{cens.name}{ A character giving the code for censored
-    observations in the column 'to' of \code{data}. If there is no
-    censored observations in your data, put 'NULL'.}
+    observations in the column \code{to} of \code{data}. If there is no
+    censored observations in your data, put \code{NULL}.}
 }
 
 \details{

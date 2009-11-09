@@ -3,9 +3,9 @@
 
 \title{ Panel plots for object of class 'mvna' }
 \description{
-  xyplot function for objects of class 'mvna'. Estimates of the
+  xyplot function for objects of class \code{mvna}. Estimates of the
   cumulative hazards are plotted as a function of time for all the
-  transitions specified by the user. This function could also plot
+  transitions specified by the user. The function can also plot
   several types of pointwise confidence interval (see Andersen et
   al. (1993) p.208).
 }
@@ -23,8 +23,8 @@
   \item{data}{\emph{Useless}.}
   \item{xlab}{ x-axis label. Default is "Time". }
   \item{ylab}{ y-axis label. Default is "Cumulative Hazard" }
-  \item{tr.choice}{A character vector of the form 'c("from to","from
-    to")' specifying which transitions should be plotted. Default is "all".  }
+  \item{tr.choice}{A character vector of the form \code{c("from to","from
+    to")} specifying which transitions should be plotted. Default is "all".  }
   \item{conf.int}{ A logical whether plot pointwise confidence
     interval. Default is TRUE}
   \item{var.type}{One of "aalen" or "greenwood". Specifies which

@@ -18,8 +18,8 @@ plot.mvna <- function(x, tr.choice, xlab = "Time",
         stop("Names of the possible transitions and 'tr.choice' must match")
     }
 
-    object <- summary.mvna(x, level = level, var.type = var.type,
-                           ci.fun = ci.fun)[tr.choice]
+    object <- mvna::summary.mvna(x, level = level, var.type = var.type,
+                                 ci.fun = ci.fun)[tr.choice]
     lt <- length(object)
 
     if (missing(lty)) {

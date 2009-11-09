@@ -3,10 +3,10 @@
 
 \title{ Print method for 'mvna' object }
 \description{
-  Print method for an object of class 'mvna'. It prints estimates of
+  Print method for an object of class \code{mvna}. It prints estimates of
   the cumulative hazard along with estimates of the variance described
   in eq. (4.1.6) and (4.1.7) of Andersen et al. (1993) at several
-  timepoints obtained with the \code{quantile} function.
+  time points obtained with the \code{quantile} function.
 }
 \usage{
 \method{print}{mvna}(x, \dots)
