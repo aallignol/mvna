@@ -8,17 +8,17 @@
 }
 \usage{
 \S3method{plot}{mvna}(x, tr.choice, xlab = "Time",
-ylab = "Cumulative Hazard", col = 1, lty, xlim, ylim,
-conf.int = FALSE, level = 0.95,
-var.type = c("aalen", "greenwood"),
-ci.fun = c("log", "linear", "arcsin"),
-ci.col = col, ci.lty = 3,
-legend = TRUE, legend.pos, curvlab, legend.bty = "n", ...)
+     ylab = "Cumulative Hazard", col = 1, lty, xlim, ylim,
+     conf.int = FALSE, level = 0.95,
+     var.type = c("aalen", "greenwood"),
+     ci.fun = c("log", "linear", "arcsin"),
+     ci.col = col, ci.lty = 3,
+     legend = TRUE, legend.pos, curvlab, legend.bty = "n", ...)
 }
 \arguments{
-  \item{x}{An object of class 'mvna'.}
-  \item{tr.choice}{A character vector of the form 'c("from to","from
-    to")' specifying which transitions should be plotted. Default, all
+  \item{x}{An object of class \code{mvna}.}
+  \item{tr.choice}{A character vector of the form \code{c("from to","from
+    to")} specifying which transitions should be plotted. Default, all
     the cumulative transition hazards are plotted.}
   \item{xlab}{x-axis label. Default is "Time".}
   \item{ylab}{y-axis label. Default is "Cumulative Hazard".}

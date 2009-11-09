@@ -13,14 +13,15 @@
 }
 
 \arguments{
-  \item{x}{An object of class 'mvna'}
-  \item{\dots}{Other arguments for print method }
+  \item{x}{An object of class \code{mvna}}
+  \item{\dots}{Other arguments for print method}
 }
 
 \value{
- \code{x} with the invisible flag set
+  No value returned.
 }
 \author{ Arthur Allignol, \email{arthur.allignol@fdm-freiburg.de} }
-\seealso{ \code{\link{mvna}} }
+\seealso{\code{\link{mvna}}}
 
-\keyword{ print }
+\keyword{print}
+\keyword{survival}

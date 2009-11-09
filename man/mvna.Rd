@@ -50,7 +50,7 @@ mvna(data, state.names, tra, cens.name)
   \item{na}{Nelson-Aalen estimates at each transition times.}
   \item{var.aalen}{Variance estimator given in eq. (4.1.6) of Andersen et
     al. (1993).}
-  \item{var2}{Variance estimator given in eq. (4.1.7) of Andersen et
+  \item{var.greenwood}{Variance estimator given in eq. (4.1.7) of Andersen et
     al. (1993).}
   \item{time}{The transition times.}
   The list also contains:
@@ -70,9 +70,8 @@ mvna(data, state.names, tra, cens.name)
   The variance estimator (4.1.6) may overestimate the true variance, and
   the one defined eq. (4.1.7) may underestimate the true variance (see
   Klein (1991) and Andersen et al. (example IV.1.1, 1993)), especially
-  with small sample set. Therefore, a warning will be produced for
-  risk-sets smaller than 5. Klein (1991) recommends the use of the variance
-  estimator of eq. (4.1.6) because he found it less biased.
+  with small sample set. Klein (1991) recommends the use of the variance
+  estimator of eq. (4.1.6, "aalen") because he found it to be less biased.
   }
 \references{Andersen, P.K., Borgan, O., Gill, R.D. and Keiding,
   N. (1993). \emph{Statistical models based on counting

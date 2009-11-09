@@ -3,18 +3,18 @@
 \title{ Calculates Nelson-Aalen estimates at specified time-points }
 \description{
   This function gives the Nelson-Aalen estimates at time-points
-  specified by the user, along with the two variance estimators.
+  specified by the user.
 }
 \usage{
 \S3method{predict}{mvna}(object, times, tr.choice, level = 0.95,
-var.type = c("aalen", "greenwood"),
-ci.fun = c("log", "linear", "arcsin"), ...)
+        var.type = c("aalen", "greenwood"),
+        ci.fun = c("log", "linear", "arcsin"), ...)
 }
 
 \arguments{
-  \item{object}{ An object of class 'mvna' }
-  \item{times}{ Time-points at which you want the estimates }
-  \item{tr.choice}{ A vector of character giving for which transitions
+  \item{object}{An object of class \code{mvna}}
+  \item{times}{Time-points at which one wants the estimates}
+  \item{tr.choice}{A vector of character giving for which transitions
     you want estimates. By default, the function will give the
     Nelson-Aalen estimates for all the transitions.}
   \item{level}{Level of the pointwise confidence intervals. Default is

@@ -80,3 +80,4 @@ for (i in 2:nrow(sir.cont)) {
 
 }
 \keyword{datasets}
+\keyword{survival}

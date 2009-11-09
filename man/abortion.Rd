@@ -8,7 +8,7 @@
   probability of spontaneous abortions. Apart from spontaneous abortion,
   pregnancy may end in induced abortion or live birth. Moreover, data
   are left-truncated as women usually enter the study several weeks
-  after conception
+  after conception.
 }
 \usage{data(abortion)}
 \format{
@@ -33,3 +33,4 @@
 data(abortion)
 }
 \keyword{datasets}
+\keyword{survival}

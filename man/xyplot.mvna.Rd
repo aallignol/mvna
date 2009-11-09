@@ -11,11 +11,11 @@
 }
 \usage{
 \method{xyplot}{mvna}(x, data = NULL, xlab = "Time",
-              ylab = "Cumulative Hazard", tr.choice = "all",
-              conf.int = TRUE, var.type = c("aalen", "greenwood"),
-              ci.fun = c("log", "linear", "arcsin"), level = 0.95,
-              col = 1, lty = 1, ci.col = 1, ci.lty = 3,
-              ci.type = c(1, 2), ...)
+       ylab = "Cumulative Hazard", tr.choice = "all",
+       conf.int = TRUE, var.type = c("aalen", "greenwood"),
+       ci.fun = c("log", "linear", "arcsin"), level = 0.95,
+       col = 1, lty = 1, ci.col = 1, ci.lty = 3,
+       ci.type = c(1, 2), ...)
 }
 
 \arguments{
@@ -43,7 +43,7 @@
 }
 
 \value{
-  An object of class 'trellis'.
+  An object of class \code{trellis}.
 }
 
 \note{

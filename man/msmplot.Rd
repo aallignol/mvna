@@ -122,4 +122,5 @@ msmplot(temp, width = c(0.25, 0.25, 0.2, 0.25),
         height = c(0.2, 0.2, 0.18, 0.2), lcex=0.8)
 }
 }
-\keyword{device}
+\keyword{hplot}
+\keyword{survival}

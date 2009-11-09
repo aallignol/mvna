@@ -13,8 +13,9 @@
 }
 \usage{
 \S3method{summary}{mvna}(object, level = 0.95,
-var.type = c("aalen", "greenwood"),
-ci.fun = c("log", "linear", "arcsin"), ...)
+        var.type = c("aalen", "greenwood"),
+        ci.fun = c("log", "linear", "arcsin"), ...)
+
 \S3method{print.summary}{mvna}(x, ...)
 }
 \arguments{
