@@ -14,7 +14,7 @@
        ylab = "Cumulative Hazard", tr.choice = "all",
        conf.int = TRUE, var.type = c("aalen", "greenwood"),
        ci.fun = c("log", "linear", "arcsin"), level = 0.95,
-       col = 1, lty = 1, ci.col = 1, ci.lty = 3,
+       col = c(1, 1, 1), lty = c(1, 3, 3),
        ci.type = c(1, 2), ...)
 }
 
@@ -34,10 +34,7 @@
   is "log".}
   \item{level}{Level of the confidence interval. Default is 0.95.}
   \item{col}{Vector of colour for the plot. Default is black.}
-  \item{lty}{Vector of line type. Default is 1}
-  \item{ci.col}{Colour of the confidence interval lines. Default is
-    black.}
-  \item{ci.lty}{Line type of the confidence intervals. Default is 3.}
+  \item{lty}{Vector of line type. Default is \code{c(1, 3, 3)}.}
   \item{ci.type}{\emph{DEPRECATED}}
   \item{\dots}{Other arguments for xyplot.}
 }
