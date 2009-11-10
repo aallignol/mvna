@@ -1,7 +1,7 @@
 xyplot.mvna <- function(x, data = NULL, xlab = "Time", ylab = "Cumulative Hazard",
                         tr.choice = "all", conf.int = TRUE, var.type = c("aalen", "greenwood"),
-                        ci.fun = c("log", "linear", "arcsin"), level = 0.95, col = 1,
-                        lty = 1, ci.col = 1, ci.lty = 3, ci.type = c(1, 2), ...) {
+                        ci.fun = c("log", "linear", "arcsin"), level = 0.95, col = c(1, 1, 1),
+                        lty = c(1, 3, 3), ci.type = c(1, 2), ...) {
 
     if (!inherits(x, "mvna"))
         stop("'x' must be of class 'mvna'")
@@ -20,8 +20,7 @@ xyplot.mvna <- function(x, data = NULL, xlab = "Time", ylab = "Cumulative Hazard
 
     z <- mvna::summary.mvna(x, level = level, var.type = var.type,
                             ci.type = ci.type)
-    ##     z <- mvna::summary.mvna(x, level = level, var.type = var.type,
-    ##                       ci.type = ci.type)
+
     z <- z[tr.choice]
     zz <- do.call(rbind, z)
     zz$cov <- rapply(mapply(rep, tr.choice, sapply(z, nrow), SIMPLIFY = FALSE), c)
@@ -31,7 +30,7 @@ xyplot.mvna <- function(x, data = NULL, xlab = "Time", ylab = "Cumulative Hazard
     ## Let's do the plots
     if (conf.int) {
         dessin <- xyplot(na + lower + upper ~ time | cov, data = zz, type = "s",
-                         col = c(col, ci.col, ci.col), lty = c(lty, ci.lty, ci.lty),
+                         col = col, lty = lty,
                          xlab = xlab, ylab = ylab, ...)
     } else {
         dessin <- xyplot(na ~ time | cov, data = zz, type = "s",
