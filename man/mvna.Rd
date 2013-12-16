@@ -109,6 +109,7 @@ tra[2, c(1, 3)] <- TRUE
 na <- mvna(sir.cont,c("0","1","2"),tra,"cens")
 
 # plot
+if (require(lattice))
 xyplot(na)
 
 ### example with left-truncation

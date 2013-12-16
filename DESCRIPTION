@@ -5,6 +5,6 @@ Author: Arthur Allignol
 Description: This package computes the Nelson-Aalen estimator of the cumulative transition hazard for multistate models. 
 Maintainer: Arthur Allignol <arthur.allignol@uni-ulm.de>
 License: GPL (>=2)
-Depends: lattice
+Imports: lattice
 Suggests: Rgraphviz, gridBase
 Date: 2013/9/16
