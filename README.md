@@ -18,7 +18,7 @@ Or you can install the development version from github
 ```{r}
 ## if necessary
 ## install.packages("devtools")
-devtools::install_github("robjhyndman/forecast")
+devtools::install_github("aallignol/mvna")
 ```
 
 ## Usage ##
